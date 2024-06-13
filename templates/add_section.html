@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Section</title>
+</head>
+<body>
+    <h1>Add Section</h1>
+    <a href="{{ url_for('index') }}">back</a>
+    <h1> </h1>
+
+    <form method="POST" action="{{ url_for('add_section') }}">
+        {{ section_form.hidden_tag() }}
+        {{ section_form.name.label }} {{ section_form.name() }}<br>
+        {{ section_form.monday.label }} {{ section_form.monday() }}<br>
+        {{ section_form.tuesday.label }} {{ section_form.tuesday() }}<br>
+        {{ section_form.wednesday.label }} {{ section_form.wednesday() }}<br>
+        {{ section_form.thursday.label }} {{ section_form.thursday() }}<br>
+        {{ section_form.friday.label }} {{ section_form.friday() }}<br>
+        {{ section_form.saturday.label }} {{ section_form.saturday() }}<br>
+        {{ section_form.sunday.label }} {{ section_form.sunday() }}<br>
+        {{ section_form.submit() }}
+    </form>
+</body>
+</html>

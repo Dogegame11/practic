@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add People</title>
+</head>
+<body>
+    <h1>Add People</h1>
+
+    <h2>Add Student</h2>
+    <form method="POST" action="{{ url_for('add_people') }}">
+        {{ student_form.hidden_tag() }}
+        <label for="student-section">Select Section:</label>
+        <select id="student-section" name="student-section">
+            {% for section in student_form.section.choices %}
+                <option value="{{ section[0] }}">{{ section[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="competition">Competition:</label>
+        {{ student_form.competition }}<br>
+        {{ student_form.submit() }}
+    </form>
+</body>
+</html>

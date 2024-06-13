@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Schedule</title>
+</head>
+<body>
+    <h1>Add Schedule</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.section.label }} {{ form.section() }}<br>
+        {{ form.day.label }} {{ form.day() }}<br>
+        {{ form.time.label }} {{ form.time() }}<br>
+        {{ form.submit() }}
+    </form>
+</body>
+</html>

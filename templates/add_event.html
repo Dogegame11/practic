@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Event</title>
+</head>
+<body>
+    <h1>Add Event</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name() }}<br>
+        {{ form.date.label }} {{ form.date() }}<br>
+        {{ form.location.label }} {{ form.location() }}<br>
+        {{ form.submit() }}
+    </form>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sports Club</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Спорт на факультеті</h1>
+        {% if 'username' in session %}
+        <div class="nav">
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('profile') }}">Профіль</a>
+        </div>
+        {% endif %}
+        
+        <div class="section">
+            <h2>Participants</h2>
+            <table>
+                <tr>
+                    <th>Ім'я</th>
+                    <th>Студент/Викладач</th>
+                    <th>Секція</th>
+                    <th>ID</th>
+                    <th>Змагання</th>
+                    <th>Довідка</th>
+                </tr>
+                {% for person in people %}
+                <tr>
+                    <td>{{ person[1] }}</td>
+                    <td>{{ person[3] }}</td> <!-- Ensure the role (person[3]) is correct -->
+                    <td>{{ person[4] }}</td>
+                    <td>{{ person[5] }}</td>
+                    <td>{{ 'Так' if person[6] else 'Ні' }}</td>
+                    <td>
+                        <a href="{{ url_for('generate_report', person_id=person[0]) }}" class="button">Завантажити</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Sections</h2>
+            <table>
+                <tr>
+                    <th>Секція</th>
+                    <th>Понеділок</th>
+                    <th>Вівторок</th>
+                    <th>Середа</th>
+                    <th>Четвер</th>
+                    <th>Пятниця</th>
+                    <th>Субота</th>
+                    <th>Неділя</th>
+                </tr>
+                {% for section in sections %}
+                <tr>
+                    <td>{{ section[1] }}</td>
+                    <td>{{ section[2] }}</td>
+                    <td>{{ section[3] }}</td>
+                    <td>{{ section[4] }}</td>
+                    <td>{{ section[5] }}</td>
+                    <td>{{ section[6] }}</td>
+                    <td>{{ section[7] }}</td>
+                    <td>{{ section[8] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Зареестуватись на секцію</h2>
+            <a class="button" href="{{ url_for('add_people') }}">Реестрація</a>
+        </div>
+
+        <div class="section">
+            <h2>Створити секцію</h2>
+            <a class="button" href="{{ url_for('add_section') }}">Створити</a>
+        </div>
+    </div>
+</body>
+</html>
